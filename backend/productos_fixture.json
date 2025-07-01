@@ -1,0 +1,132 @@
+[
+  {
+    "model": "productos.producto",
+    "pk": 1,
+    "fields": {
+      "codigo": "FER-1001",
+      "nombre": "Taladro Percutor 750W",
+      "marca": "Bosch",
+      "precio": "89990.00",
+      "stock": 12,
+      "categoria": "Herramientas Eléctricas",
+      "descripcion": "Taladro eléctrico con percutor, ideal para concreto y madera."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 2,
+    "fields": {
+      "codigo": "FER-1002",
+      "nombre": "Martillo de 16oz",
+      "marca": "Stanley",
+      "precio": "5990.00",
+      "stock": 30,
+      "categoria": "Herramientas Manuales",
+      "descripcion": "Martillo con mango de fibra de vidrio y cabeza de acero templado."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 3,
+    "fields": {
+      "codigo": "FER-1003",
+      "nombre": "Sierra Circular 1400W",
+      "marca": "Makita",
+      "precio": "125000.00",
+      "stock": 8,
+      "categoria": "Herramientas Eléctricas",
+      "descripcion": "Sierra circular para cortes precisos en madera y materiales similares."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 4,
+    "fields": {
+      "codigo": "FER-2001",
+      "nombre": "Cemento Portland 25Kg",
+      "marca": "Melón",
+      "precio": "5890.00",
+      "stock": 40,
+      "categoria": "Materiales Básicos",
+      "descripcion": "Cemento de alta resistencia para construcción."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 5,
+    "fields": {
+      "codigo": "FER-2002",
+      "nombre": "Ladrillos Rojo 10x20x5 cm",
+      "marca": "Ladrillera Chile",
+      "precio": "230.00",
+      "stock": 500,
+      "categoria": "Materiales Básicos",
+      "descripcion": "Ladrillos para construcción general."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 6,
+    "fields": {
+      "codigo": "FER-3001",
+      "nombre": "Lentes de Seguridad Anti-empañante",
+      "marca": "3M",
+      "precio": "2990.00",
+      "stock": 100,
+      "categoria": "Equipos de Seguridad",
+      "descripcion": "Lentes con protección UV y anti-empañante."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 7,
+    "fields": {
+      "codigo": "FER-3002",
+      "nombre": "Guantes de Trabajo de Cuero",
+      "marca": "Bata",
+      "precio": "4990.00",
+      "stock": 75,
+      "categoria": "Equipos de Seguridad",
+      "descripcion": "Guantes resistentes para trabajos pesados."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 8,
+    "fields": {
+      "codigo": "FER-4001",
+      "nombre": "Tornillos 4x30 mm Caja 100 unidades",
+      "marca": "Fischer",
+      "precio": "1490.00",
+      "stock": 200,
+      "categoria": "Tornillos y Anclajes",
+      "descripcion": "Tornillos de acero para fijaciones generales."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 9,
+    "fields": {
+      "codigo": "FER-4002",
+      "nombre": "Adhesivo Epóxico 2 componentes",
+      "marca": "Loctite",
+      "precio": "7990.00",
+      "stock": 50,
+      "categoria": "Fijaciones y Adhesivos",
+      "descripcion": "Adhesivo fuerte para reparaciones y fijaciones duraderas."
+    }
+  },
+  {
+    "model": "productos.producto",
+    "pk": 10,
+    "fields": {
+      "codigo": "FER-5001",
+      "nombre": "Cinta Métrica 5 metros",
+      "marca": "Stanley",
+      "precio": "7990.00",
+      "stock": 60,
+      "categoria": "Equipos de Medición",
+      "descripcion": "Cinta métrica con bloqueo y carcasa resistente."
+    }
+  }
+]
