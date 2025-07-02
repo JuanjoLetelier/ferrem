@@ -1,0 +1,13 @@
+h2 {
+  color: #007acc;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li h3 {
+  margin: 0;
+}

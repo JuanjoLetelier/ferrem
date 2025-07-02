@@ -7,4 +7,5 @@ router.register(r'productos', ProductoViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('', include('productos.auth_urls')),  # Rutas de autenticación
 ]

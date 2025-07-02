@@ -1,0 +1,7 @@
+<h2>Productos disponibles</h2>
+<ul>
+  <li *ngFor="let producto of productos" style="margin-bottom: 1rem; border-bottom: 1px solid #ccc; padding-bottom: 0.5rem;">
+    <h3><a [routerLink]="['/producto', producto.id]">{{ producto.nombre }}</a> - ${{ producto.precio }}</h3>
+    <p>{{ producto.descripcion }}</p>
+  </li>
+</ul>
