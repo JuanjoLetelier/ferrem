@@ -1,14 +1,21 @@
-<h2>Carrito de Compras</h2>
-<ul *ngIf="carrito.length > 0; else vacio">
+<h2>Carrito de compras</h2>
+
+<div *ngIf="carrito.length === 0">
+  No hay productos en el carrito.
+</div>
+
+<ul *ngIf="carrito.length > 0">
   <li *ngFor="let producto of carrito; let i = index">
-    {{ producto.nombre }} - ${{ producto.precio }}
-    <button (click)="eliminarProducto(i)">Eliminar</button>
+    <h3>{{ producto.nombre }} - ${{ producto.precio }}</h3>
+    <p>{{ producto.descripcion }}</p>
+    <p>Cantidad: {{ producto.cantidad }}</p>
+    <button (click)="disminuirCantidad(producto.id)">-</button>
+    <button (click)="aumentarCantidad(producto)">+</button>
+    <button (click)="eliminarProducto(producto.id)">Eliminar</button>
   </li>
 </ul>
-<ng-template #vacio>
-  <p>No hay productos en el carrito.</p>
-</ng-template>
 
-<p *ngIf="carrito.length > 0">
-  <strong>Total:</strong> ${{ obtenerTotal() }}
-</p>
+<div *ngIf="carrito.length > 0">
+  <h3>Total: ${{ total }}</h3>
+  <button (click)="limpiarCarrito()">Vaciar carrito</button>
+</div>

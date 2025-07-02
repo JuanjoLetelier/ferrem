@@ -3,7 +3,7 @@ from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from .models import Producto
 from .serializers import ProductoSerializer
@@ -11,6 +11,7 @@ from .serializers import ProductoSerializer
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all()
     serializer_class = ProductoSerializer
+    permission_classes = [AllowAny]#[IsAuthenticated]
 
 # NUEVA VISTA: Registro de usuarios
 class RegisterView(APIView):

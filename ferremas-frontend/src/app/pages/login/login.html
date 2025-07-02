@@ -1,13 +1,9 @@
 <h2>Login</h2>
 
 <form (ngSubmit)="login()">
-  <label>Usuario:</label>
-  <input [(ngModel)]="username" name="username" required />
-
-  <label>Contraseña:</label>
-  <input type="password" [(ngModel)]="password" name="password" required />
-
+  <input type="text" [(ngModel)]="username" name="username" placeholder="Usuario" required />
+  <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required />
   <button type="submit">Ingresar</button>
 </form>
 
-<p *ngIf="errorMsg" style="color:red;">{{ errorMsg }}</p>
+<div *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</div>

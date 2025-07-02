@@ -6,6 +6,6 @@ router = DefaultRouter()
 router.register(r'productos', ProductoViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('', include('productos.auth_urls')),  # Rutas de autenticación
+    path('', include(router.urls)),  # Para /api/productos/ y demás
+    path('auth/', include('productos.auth_urls')),  # Para /api/auth/token/, /api/auth/register/, etc.
 ]

@@ -18,9 +18,18 @@ export class Login {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
-    this.authService.login(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/']),
-      error: () => this.errorMsg = 'Credenciales inválidas'
-    });
-  }
+  console.log('Login con:', this.username, this.password);
+  this.authService.login(this.username, this.password).subscribe({
+    next: (res: any) => {
+      // Guardar el token en localStorage
+      localStorage.setItem('access_token', res.access);
+      localStorage.setItem('refresh_token', res.refresh);
+
+      // Redirigir al inicio u otra vista protegida
+      this.router.navigate(['/']);
+    },
+    error: () => this.errorMsg = 'Credenciales inválidas'
+  });
+}
+
 }

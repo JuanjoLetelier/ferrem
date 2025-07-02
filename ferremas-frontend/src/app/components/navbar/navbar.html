@@ -3,6 +3,13 @@
   <a routerLink="/productos" routerLinkActive="active" style="margin-right:1rem; color:white; text-decoration:none;">Productos</a>
   <a routerLink="/carrito" routerLinkActive="active" style="margin-right:1rem; color:white; text-decoration:none;">Carrito</a>
   <a routerLink="/pago" routerLinkActive="active" style="color:white; text-decoration:none;">Pago</a>
-  <a routerLink="/registro" routerLinkActive="active" style="color:white; text-decoration:none;">Registrarse</a>
-  <a routerLink="/login" routerLinkActive="active" style="color:white; text-decoration:none;">Login</a>
+
+  <ng-container *ngIf="!isLoggedIn">
+    <a routerLink="/login" style="margin-left:1rem; color:white; text-decoration:none;">Iniciar sesión</a>
+    <a routerLink="/registro" style="margin-left:1rem; color:white; text-decoration:none;">Registrarse</a>
+  </ng-container>
+
+  <ng-container *ngIf="isLoggedIn">
+    <a (click)="logout()" style="margin-left:1rem; color:white; text-decoration:none; cursor:pointer;">Cerrar sesión</a>
+  </ng-container>
 </nav>

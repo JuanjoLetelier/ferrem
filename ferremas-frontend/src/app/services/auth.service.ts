@@ -11,7 +11,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:8000/api';  // Cambia si tu backend usa otra URL
+  private baseUrl = 'http://localhost:8000/api/auth';  // Cambia si tu backend usa otra URL; Se agrego auth
 
   private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
 
