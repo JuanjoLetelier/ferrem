@@ -11,12 +11,14 @@ export interface ProductoEnCarrito extends Producto {
 export class CarritoService {
   private carrito: ProductoEnCarrito[] = [];
 
-  agregar(producto: Producto) {
+  agregar(producto: Producto, cantidad: number = 1) {
     const item = this.carrito.find(p => p.id === producto.id);
     if (item) {
-      item.cantidad++;
+      const nuevaCantidad = item.cantidad + cantidad;
+      item.cantidad = Math.min(nuevaCantidad, producto.stock); // No exceder stock
     } else {
-      this.carrito.push({ ...producto, cantidad: 1 });
+      const cantidadInicial = Math.min(cantidad, producto.stock);
+      this.carrito.push({ ...producto, cantidad: cantidadInicial });
     }
   }
 

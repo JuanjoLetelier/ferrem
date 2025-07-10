@@ -1,23 +1,73 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { ProductosService, Producto } from '../../services/productos.service';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Producto, ProductosService } from '../../services/productos.service';
+import { CarritoService } from '../../services/carrito.service'; 
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-productos',
-  standalone: true,
-  imports: [RouterModule, CommonModule],
   templateUrl: './productos.html',
-  styleUrls: ['./productos.css']
+  styleUrls: ['./productos.css'],
+  standalone: true, 
+  imports: [CommonModule, FormsModule],
 })
 export class Productos implements OnInit {
+
   productos: Producto[] = [];
-  private productosService = inject(ProductosService);
+  cantidadPorProducto: { [id: number]: number } = {};
+
+  constructor(
+    private productoService: ProductosService,
+    private carritoService: CarritoService 
+  ) {}
+
+
 
   ngOnInit(): void {
-    this.productosService.getProductos().subscribe({
-      next: (data) => this.productos = data,
-      error: (err) => console.error('Error al cargar productos', err)
+
+    this.productoService.getProductos().subscribe({
+      next: (data) => {
+        this.productos = data;
+      },
+      error: (error) => {
+        console.error('Error al obtener productos:', error);
+      }
     });
+    
+    this.productoService.productosActualizados$.subscribe(actualizado => {
+    if (actualizado) {
+      this.actualizarStockLocal(actualizado.id, actualizado.stock);
+      }
+    });
+  }
+  
+  agregarAlCarrito(producto: Producto): void {
+    const input = prompt(`¿Cuántas unidades de "${producto.nombre}" quieres agregar al carrito? (Stock disponible: ${producto.stock})`);
+    
+    if (!input) return; // Cancelado
+    const cantidad = parseInt(input, 10);
+
+    if (isNaN(cantidad) || cantidad <= 0) {
+      alert('Ingresa una cantidad válida.');
+      return;
+    }
+
+    if (cantidad > producto.stock) {
+      alert(`No puedes agregar más que el stock disponible (${producto.stock}).`);
+      return;
+    }
+
+    this.carritoService.agregar(producto, cantidad);
+    alert(`${cantidad} unidad(es) de "${producto.nombre}" agregadas al carrito.`);
+  }
+  actualizarStockLocal(id: number, nuevoStock: number) {
+  const index = this.productos.findIndex(p => p.id === id);
+  if (index !== -1) {
+    this.productos[index].stock = nuevoStock;
+    }
+  }
+
+  trackByProducto(index: number, producto: any): number {
+  return producto.id;
   }
 }

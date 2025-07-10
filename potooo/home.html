@@ -1,0 +1,75 @@
+<div class="container mt-4">
+
+  <!-- ===== CARRUSEL DE BOOTSTRAP 5 ===== -->
+  <div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Primero marcamos el primer slide como "active" -->
+      <div
+        *ngFor="let product of featuredProducts; let i = index"
+        class="carousel-item"
+        [class.active]="i === 0"
+      >
+        <img [src]="product.image" class="d-block w-100 carousel-img" [alt]="product.name" />
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+          <h5>{{ product.name }}</h5>
+          <p>{{ product.description }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Controles (flechas izquierda/derecha) -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+  <!-- ===== FIN CARRUSEL ===== -->
+  <hr>
+
+  <!-- ===== GRID DE CARDS DE OTROS PRODUCTOS ===== -->
+<div class="row">
+  <div class="col-md-4 mb-4" *ngFor="let p of otherProducts">
+    <div class="card h-100 shadow-sm product-card">
+      <img [src]="p.image" class="card-img-top product-image" [alt]="p.name" />
+      <div class="card-body d-flex flex-column justify-content-between">
+        <div>
+          <h5 class="card-title">{{ p.name }}</h5>
+          <p class="card-text">{{ p.description }}</p>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-between align-items-center">
+          <!-- Botón de agregar -->
+          <button class="btn btn-primary btn-sm" type="button" (click)="agregarAlCarrito(p)">
+            Agregar al carrito
+          </button>
+          <a [routerLink]="['/producto', p.name]" [state]="{ productos: otherProducts }" class="btn btn-outline-secondary btn-sm">
+            Ver más
+          </a>
+        </div>
+        <small class="text-muted">Precio: ${{ p.price }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- ===== FIN CARDS ===== -->
+<!--<ng-container *ngFor="let product of featuredProducts">
+  <img [src]="product.image" [alt]="product.name" class="img-fluid" />
+  <h5>{{ product.name }}</h5>
+  <p>{{ product.description }}</p>
+</ng-container>
+-->
+</div>

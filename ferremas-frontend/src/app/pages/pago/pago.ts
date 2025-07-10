@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CarritoService } from '../../services/carrito.service';
-import { Producto } from '../../services/productos.service';
 import { RouterModule } from '@angular/router';
+
+import { ProductoEnCarrito, CarritoService } from '../../services/carrito.service';
+import { ProductosService } from '../../services/productos.service';
+
+declare var Stripe: any;
 
 @Component({
   selector: 'app-pago',
@@ -12,9 +15,12 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./pago.css']
 })
 export class Pago {
-  carrito: Producto[] = [];
+  carrito: ProductoEnCarrito[] = [];
 
-  constructor(private carritoService: CarritoService) {
+  constructor(
+    private carritoService: CarritoService,
+    private productosService: ProductosService
+  ) {
     this.carrito = carritoService.obtenerCarrito();
   }
 
@@ -23,8 +29,27 @@ export class Pago {
   }
 
   pagar() {
-    alert('¡Pago realizado con éxito!');
-    this.carrito.length = 0; // Limpia el carrito visualmente
-    this.carritoService['carrito'] = []; // Limpia internamente
+    if (this.carrito.length === 0) {
+      alert('El carrito está vacío');
+      return;
+    }
+
+    const stripe = Stripe('pk_test_51RjJQ52Lm4takNpeEaI3KwgyNgbDecPKclv1k6WICW3WRhU0VZGO91KHIl1cpj8rkJVLLL4vI35zOH5qY1bYEJpy00AzYit0YJ'); // Usa tu clave pública
+
+    const itemsParaPago = this.carrito.map(item => ({
+      nombre: item.nombre,
+      precio: item.precio,
+      cantidad: item.cantidad
+    }));
+
+    this.productosService.crearSesionPago(itemsParaPago).subscribe({
+      next: (response: any) => {
+        stripe.redirectToCheckout({ sessionId: response.id });
+      },
+      error: (err) => {
+        console.error('Error iniciando sesión de pago', err);
+        alert('Hubo un problema con el pago.');
+      }
+    });
   }
 }

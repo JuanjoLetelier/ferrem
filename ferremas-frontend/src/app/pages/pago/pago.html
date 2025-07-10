@@ -2,7 +2,10 @@
 
 <ul *ngIf="carrito.length > 0; else sinProductos">
   <li *ngFor="let producto of carrito">
-    {{ producto.nombre }} - ${{ producto.precio }}
+    {{ producto.nombre }} - 
+    Cantidad: {{ producto.cantidad }} - 
+    Precio: {{ producto.precio | currency:'CLP' }} - 
+    Subtotal: {{ producto.cantidad * producto.precio | currency:'CLP' }}
   </li>
 </ul>
 
@@ -11,7 +14,7 @@
 </ng-template>
 
 <p *ngIf="carrito.length > 0">
-  <strong>Total a pagar:</strong> ${{ obtenerTotal() }}
+  <strong>Total a pagar:</strong> {{ obtenerTotal() | currency:'CLP' }}
 </p>
 
 <button *ngIf="carrito.length > 0" (click)="pagar()">Pagar</button>

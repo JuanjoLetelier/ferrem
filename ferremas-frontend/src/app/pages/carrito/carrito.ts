@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService, ProductoEnCarrito } from '../../services/carrito.service';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-carrito',
   standalone: true,
   templateUrl: './carrito.html',
-  styleUrls: ['./carrito.css']
-})
+  styleUrls: ['./carrito.css'],
+  imports: [CommonModule]})
 export class Carrito implements OnInit {
   carrito: ProductoEnCarrito[] = [];
   total = 0;
