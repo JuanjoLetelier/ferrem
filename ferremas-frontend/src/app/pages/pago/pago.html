@@ -16,5 +16,8 @@
 <p *ngIf="carrito.length > 0">
   <strong>Total a pagar:</strong> {{ obtenerTotal() | currency:'CLP' }}
 </p>
-
+<!-- Pago real con Stripe -->
 <button *ngIf="carrito.length > 0" (click)="pagar()">Pagar</button>
+<hr>
+<!-- Simulación de pago -->
+<button (click)="simularPago()" *ngIf="carrito.length > 0">Simular pago (descontar stock sin Stripe)</button>

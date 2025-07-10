@@ -12,7 +12,7 @@
         </div>
         <div class="card-footer">
           <small class="text-muted d-block mb-2">
-            Precio: ${{ p.precio }} | Stock: {{ p.stock }}
+            Precio: {{ p.precio | currency:'CLP'}} | Stock: {{ p.stock }}
           </small>
           <div class="d-flex justify-content-between align-items-center">
             <button class="btn btn-primary btn-sm" type="button" (click)="agregarAlCarrito(p)" [disabled]="p.stock === 0">

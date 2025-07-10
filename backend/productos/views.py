@@ -12,7 +12,7 @@ from .serializers import ProductoSerializer
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 class ProductoViewSet(viewsets.ModelViewSet):
-    queryset = Producto.objects.all()
+    queryset = Producto.objects.all().order_by('id')
     serializer_class = ProductoSerializer
     permission_classes = [AllowAny]
 
@@ -64,7 +64,7 @@ def crear_sesion_pago(request):
                 'product_data': {
                     'name': item['nombre'],
                 },
-                'unit_amount': int(float(item['precio']) * 100),  # Stripe espera centavos
+                'unit_amount': int(float(item['precio'])),
             },
             'quantity': item['cantidad'],
         })

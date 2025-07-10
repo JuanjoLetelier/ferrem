@@ -23,6 +23,7 @@ export class PagoExitoso implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.carritoService.limpiarCarrito();
     this.carrito = this.carritoService.obtenerCarrito();
 
     const actualizaciones = this.carrito.map(item => {

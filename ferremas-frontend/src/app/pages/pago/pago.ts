@@ -52,4 +52,36 @@ export class Pago {
       }
     });
   }
+
+  simularPago() {
+  if (this.carrito.length === 0) {
+    alert('El carrito está vacío');
+    return;
+  }
+
+  const actualizaciones = this.carrito.map(item => {
+    const nuevoStock = item.stock - item.cantidad;
+    return this.productosService.updateStock(item.id, nuevoStock).toPromise().then(productoActualizado => {
+      if (!productoActualizado) {
+        throw new Error(`No se recibió el producto actualizado con ID ${item.id}`);
+      }
+    this.productosService.emitirProductoActualizado(productoActualizado.id, productoActualizado.stock);
+    });
+  });
+
+    Promise.all(actualizaciones)
+      .then(() => {
+        alert('🧪 Simulación de pago exitosa. Stock actualizado.');
+        this.carritoService.limpiarCarrito();
+        this.carrito = [];
+      })
+      .catch(error => {
+        console.error('Error simulando pago:', error);
+        alert('Error al simular el pago.');
+      });
+  }
+  
 }
+
+
+
