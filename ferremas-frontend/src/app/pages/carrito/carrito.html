@@ -12,6 +12,10 @@
     <button (click)="disminuirCantidad(producto.id)">-</button>
     <button (click)="aumentarCantidad(producto)">+</button>
     <button (click)="eliminarProducto(producto.id)">Eliminar</button>
+    <button class="btn btn-success" [routerLink]="['/pago']">
+  Ir a Pagar
+</button>
+
   </li>
 </ul>
 
