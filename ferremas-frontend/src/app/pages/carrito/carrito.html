@@ -6,20 +6,21 @@
 
 <ul *ngIf="carrito.length > 0">
   <li *ngFor="let producto of carrito; let i = index">
-    <h3>{{ producto.nombre }} - ${{ producto.precio }}</h3>
-    <p>{{ producto.descripcion }}</p>
+    <h3>{{ producto.nombre }}</h3>
+    <h6>{{ producto.descripcion }}</h6>
+      <p>${{ producto.precio }}</p>
     <p>Cantidad: {{ producto.cantidad }}</p>
+    
     <button (click)="disminuirCantidad(producto.id)">-</button>
     <button (click)="aumentarCantidad(producto)">+</button>
     <button (click)="eliminarProducto(producto.id)">Eliminar</button>
-    <button class="btn btn-success" [routerLink]="['/pago']">
-  Ir a Pagar
-</button>
-
   </li>
 </ul>
-
-<div *ngIf="carrito.length > 0">
+<div *ngIf="carrito.length > 0" style="text-align: center; margin-top: 20px;">
   <h3>Total: ${{ total }}</h3>
+  <li>
+  <button (click)="irAPago()">  Ir a Pagar</button>
   <button (click)="limpiarCarrito()">Vaciar carrito</button>
+  </li>  
 </div>
+

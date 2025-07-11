@@ -24,7 +24,8 @@ export class PagoExitoso implements OnInit {
 
   ngOnInit(): void {
     this.carritoService.limpiarCarrito();
-    this.carrito = this.carritoService.obtenerCarrito();
+    const carritoStr = sessionStorage.getItem('carrito');
+    this.carrito = carritoStr ? JSON.parse(carritoStr) : [];
 
     const actualizaciones = this.carrito.map(item => {
       const nuevoStock = item.stock - item.cantidad;
@@ -34,6 +35,7 @@ export class PagoExitoso implements OnInit {
     Promise.all(actualizaciones)
       .then(() => {
         this.carritoService.limpiarCarrito();
+        sessionStorage.removeItem('carrito'); // ✅ Aquí borras el carrito persistido
       })
       .catch(error => {
         console.error('Error al actualizar stock después del pago:', error);

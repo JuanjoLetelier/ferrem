@@ -42,6 +42,10 @@ export class Pago {
       cantidad: item.cantidad
     }));
 
+
+    sessionStorage.setItem('carrito', JSON.stringify(this.carrito));
+
+
     this.productosService.crearSesionPago(itemsParaPago).subscribe({
       next: (response: any) => {
         stripe.redirectToCheckout({ sessionId: response.id });
