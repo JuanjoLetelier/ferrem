@@ -7,19 +7,32 @@
         <div class="card-body d-flex flex-column justify-content-between">
           <div>
             <h5 class="card-title">{{ p.nombre }}</h5>
-            <p class="card-text">{{ p.descripcion }}</p>
+            
+            <!-- Descripción extendida (toggle) -->
+            <div *ngIf="descripcionExpandida[p.id]" class="mt-2 text-muted">
+              <strong>Detalles</strong> {{ p.descripcion }}
+            </div>
+          </div>
+
+          <!-- Mostrar alerta si no hay productos -->
+          <div *ngIf="productos.length === 0" class="alert alert-warning">
+            No hay productos disponibles en este momento.
           </div>
         </div>
+
         <div class="card-footer">
           <small class="text-muted d-block mb-2">
-            Precio: {{ p.precio | currency:'CLP'}} | Stock: {{ p.stock }}
+            Precio: {{ p.precio | currency:'CLP' }} | Stock: {{ p.stock }}
           </small>
           <div class="d-flex justify-content-between align-items-center">
             <button class="btn btn-primary btn-sm" type="button" (click)="agregarAlCarrito(p)" [disabled]="p.stock === 0">
               Agregar al carrito
             </button>
-            <a href="#" class="text-secondary text-decoration-none">
-              Ver más
+
+            <!-- Botón Ver más / Ver menos -->
+            <a href="#" class="text-secondary text-decoration-none"
+               (click)="toggleDescripcion(p.id); $event.preventDefault()">
+              {{ descripcionExpandida[p.id] ? 'Ver menos' : 'Ver más' }}
             </a>
           </div>
         </div>

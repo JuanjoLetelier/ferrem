@@ -9,7 +9,7 @@ export interface Producto {
   nombre: string;
   precio: number;
   stock: number;
-  categoria?: string;
+  categoria: string;
   descripcion?: string;
 }
 
@@ -17,7 +17,7 @@ export interface Producto {
   providedIn: 'root' // se provee globalmente
 })
 export class ProductosService {
-  private apiUrl = 'http://localhost:8000/api/productos'; // Cambia por URL real
+  private apiUrl = 'http://localhost:8000/api/productos'; // sin barra al final
   private productosActualizadosSubject = new BehaviorSubject<{id: number, stock: number} | null>(null);
   productosActualizados$: Observable<{id: number, stock: number} | null> = this.productosActualizadosSubject.asObservable();
 
@@ -26,8 +26,9 @@ export class ProductosService {
   emitirProductoActualizado(id: number, stock: number) {
     this.productosActualizadosSubject.next({ id, stock });
   }
+
   getProductos(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(this.apiUrl);
+    return this.http.get<Producto[]>(`${this.apiUrl}/`);
   }
 
   getProducto(id: number): Observable<Producto> {

@@ -15,18 +15,17 @@ export class Productos implements OnInit {
 
   productos: Producto[] = [];
   cantidadPorProducto: { [id: number]: number } = {};
+  descripcionExpandida: { [id: number]: boolean } = {};
 
   constructor(
     private productoService: ProductosService,
     private carritoService: CarritoService 
   ) {}
 
-
-
   ngOnInit(): void {
-
     this.productoService.getProductos().subscribe({
       next: (data) => {
+        console.log(data);
         this.productos = data;
       },
       error: (error) => {
@@ -35,16 +34,16 @@ export class Productos implements OnInit {
     });
     
     this.productoService.productosActualizados$.subscribe(actualizado => {
-    if (actualizado) {
-      this.actualizarStockLocal(actualizado.id, actualizado.stock);
+      if (actualizado) {
+        this.actualizarStockLocal(actualizado.id, actualizado.stock);
       }
     });
   }
-  
+
   agregarAlCarrito(producto: Producto): void {
     const input = prompt(`¿Cuántas unidades de "${producto.nombre}" quieres agregar al carrito? (Stock disponible: ${producto.stock})`);
     
-    if (!input) return; // Cancelado
+    if (!input) return;
     const cantidad = parseInt(input, 10);
 
     if (isNaN(cantidad) || cantidad <= 0) {
@@ -60,14 +59,19 @@ export class Productos implements OnInit {
     this.carritoService.agregar(producto, cantidad);
     alert(`${cantidad} unidad(es) de "${producto.nombre}" agregadas al carrito.`);
   }
+
   actualizarStockLocal(id: number, nuevoStock: number) {
-  const index = this.productos.findIndex(p => p.id === id);
-  if (index !== -1) {
-    this.productos[index].stock = nuevoStock;
+    const index = this.productos.findIndex(p => p.id === id);
+    if (index !== -1) {
+      this.productos[index].stock = nuevoStock;
     }
   }
 
   trackByProducto(index: number, producto: any): number {
-  return producto.id;
+    return producto.id;
+  }
+
+  toggleDescripcion(id: number) {
+    this.descripcionExpandida[id] = !this.descripcionExpandida[id];
   }
 }

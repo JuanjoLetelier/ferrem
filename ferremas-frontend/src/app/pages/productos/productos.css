@@ -1,15 +1,8 @@
 h2 {
-  color: #007acc;
+  color: #333;
   margin-bottom: 1rem;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-li h3 {
-  margin: 0;
+  text-align: center;
+  font-weight: bold;
 }
 
 .container {
@@ -17,36 +10,88 @@ li h3 {
 }
 
 .card {
-  border: 1px solid rgb(152, 182, 238);
-  border-radius: 0.5rem;
-  background-color: rgb(255, 237, 210);
+  border: none;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
 .product-card {
-  height: 100%;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .product-image {
-  object-fit: contain;
-  height: 200px;
+  object-fit: cover;
+  height: 180px;
   width: 100%;
-  padding: 1rem;
+  border-bottom: 1px solid #eee;
 }
 
-.btn-primary {
-  background-color: rgb(148, 61, 61);
-  border-color: black;
+.card-body {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-  &:hover {
-    background-color: black;
-    border-color: red;
-  }
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  color: #666;
+  flex-grow: 1;
 }
 
 .card-footer {
-  background-color: rgb(201, 188, 168);
-  border-top: none;
+  background-color: #f9f9f9;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-muted {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004a9f;
+}
+
+.text-secondary {
+  font-size: 0.85rem;
+  color: #666;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.alert {
+  text-align: center;
+  font-size: 0.9rem;
 }

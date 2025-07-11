@@ -1,9 +1,38 @@
-<h2>Login</h2>
+<section>
+  <div class="contenedor">
+    <div class="formulario">
+      <form (ngSubmit)="login()">
+        <h2>Iniciar Sesión</h2>
 
-<form (ngSubmit)="login()">
-  <input type="text" [(ngModel)]="username" name="username" placeholder="Usuario" required />
-  <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required />
-  <button type="submit">Ingresar</button>
-</form>
+        <div class="input-contenedor">
+          <input type="text" [(ngModel)]="username" name="username" required />
+          <label>Usuario</label>
+          <i class="fa-solid fa-envelope"></i>
+        </div>
 
-<div *ngIf="errorMsg" style="color: red;">{{ errorMsg }}</div>
+        <div class="input-contenedor">
+          <input type="password" [(ngModel)]="password" name="password" required />
+          <label>Contraseña</label>
+          <i class="fa-solid fa-lock"></i>
+        </div>
+
+        <div class="olvidar">
+          <label>
+            <input type="checkbox" />
+            Recordar
+          </label>
+        </div>
+
+        <button type="submit">Ingresar</button>
+
+        <div class="registrar">
+          <p>¿No tienes cuenta? <a routerLink="/registro">Crear una</a></p>
+        </div>
+
+        <div *ngIf="errorMsg" style="color: #ffcccc; text-align: center; margin-top: 10px;">
+          {{ errorMsg }}
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

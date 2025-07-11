@@ -6,11 +6,14 @@ from rest_framework.permissions import AllowAny
 from rest_framework.decorators import action, api_view
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 from .models import Producto
 from .serializers import ProductoSerializer
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all().order_by('id')
     serializer_class = ProductoSerializer
@@ -80,3 +83,36 @@ def crear_sesion_pago(request):
         return Response({'id': session.id})
     except Exception as e:
         return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    endpoint_secret = 'tu_endpoint_secret_de_stripe'  # Reemplaza con el valor real de Stripe
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError:
+        return HttpResponse(status=400)  # Payload inválido
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)  # Firma inválida
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        line_items = stripe.checkout.Session.list_line_items(session['id'], limit=100)
+
+        for item in line_items.data:
+            nombre = item.description
+            cantidad = item.quantity
+
+            try:
+                producto = Producto.objects.get(nombre=nombre)
+                producto.stock = max(producto.stock - cantidad, 0)
+                producto.save()
+            except Producto.DoesNotExist:
+                pass  # Opcional: log o manejo de error
+
+    return HttpResponse(status=200)

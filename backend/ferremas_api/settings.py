@@ -65,10 +65,12 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ferremas_api.urls'
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': (),  # Vacío, sin autenticación global
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
     ),
 }
+
 
 TEMPLATES = [
     {
