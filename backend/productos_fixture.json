@@ -17,7 +17,7 @@
     "model": "productos.producto",
     "pk": 2,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://www.jupix.cl/cdn/shop/products/D_684282-MLC48645296707_122021-B.jpg?v=1661228065",
       "codigo": "FER-1002",
       "nombre": "Martillo de 16oz",
       "marca": "Stanley",
@@ -31,7 +31,7 @@
     "model": "productos.producto",
     "pk": 3,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://herramientastotal.cl/cdn/shop/products/total-tools-sierras-circulares-manuales-sierra-circular-super-1400w-total-32118898360490.jpg?v=1665468830",
       "codigo": "FER-1003",
       "nombre": "Sierra Circular 1400W",
       "marca": "Makita",
@@ -45,7 +45,7 @@
     "model": "productos.producto",
     "pk": 4,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://f.fcdn.app/imgs/120e9a/barraca5esquinas.com.uy/besquy/a9b6/original/catalogo/1034WEB_1034WEB_2/2000-2000/cemento-portland-ancap-25-kg-cpf-40-oferta-valida-en-sucursal-pando-cemento-portland-ancap-25-kg-cpf-40-oferta-valida-en-sucursal-pando.jpg",
       "codigo": "FER-2001",
       "nombre": "Cemento Portland 25Kg",
       "marca": "Melón",
@@ -59,7 +59,7 @@
     "model": "productos.producto",
     "pk": 5,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://mkchile.vtexassets.com/arquivos/ids/4694382/STM-15-0121_1.jpg?v=638827830961270000",
       "codigo": "FER-2002",
       "nombre": "Ladrillos Rojo 10x20x5 cm",
       "marca": "Ladrillera Chile",
@@ -73,7 +73,7 @@
     "model": "productos.producto",
     "pk": 6,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://segurycel.vteximg.com.br/arquivos/ids/158160-1000-1000/2722001060115000.jpg?v=636966639232900000",
       "codigo": "FER-3001",
       "nombre": "Lentes de Seguridad Anti-empañante",
       "marca": "3M",
@@ -87,7 +87,7 @@
     "model": "productos.producto",
     "pk": 7,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://i5.walmartimages.cl/asr/d075acd5-a703-4c4c-be43-3275456b6935.5ed53b323850e86bf8fd096341a8ade9.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
       "codigo": "FER-3002",
       "nombre": "Guantes de Trabajo de Cuero",
       "marca": "Bata",
@@ -101,7 +101,7 @@
     "model": "productos.producto",
     "pk": 8,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://cdnx.jumpseller.com/forza-business-group/image/55141222/19.png?1729080115",
       "codigo": "FER-4001",
       "nombre": "Tornillos 4x30 mm Caja 100 unidades",
       "marca": "Fischer",
@@ -115,7 +115,7 @@
     "model": "productos.producto",
     "pk": 9,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://mundoceys.cl/wp-content/uploads/2021/06/52510200_ceys_adhesivo_epoxico_rapido_jeringa.png",
       "codigo": "FER-4002",
       "nombre": "Adhesivo Epóxico 2 componentes",
       "marca": "Loctite",
@@ -129,7 +129,7 @@
     "model": "productos.producto",
     "pk": 10,
     "fields": {
-      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_757636-MLU69894155425_062023-O.webp",
       "codigo": "FER-5001",
       "nombre": "Cinta Métrica 5 metros",
       "marca": "Stanley",
