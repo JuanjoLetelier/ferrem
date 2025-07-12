@@ -1,16 +1,44 @@
-<h2>Registro</h2>
-
-<form (ngSubmit)="register()">
-  <label>Usuario:</label>
-  <input [(ngModel)]="username" name="username" required />
-
-  <label>Contraseña:</label>
-  <input type="password" [(ngModel)]="password" name="password" required />
-
-  <label>Repetir Contraseña:</label>
-  <input type="password" [(ngModel)]="password2" name="password2" required />
-
-  <button type="submit">Registrarse</button>
-</form>
-
-<p *ngIf="errorMsg" style="color:red;">{{ errorMsg }}</p>
+<section>
+  <div class="contenedor">
+    <div class="formulario">
+      <form (ngSubmit)="register()">
+        <h2>Registro Usuario</h2>
+        <div class="input-contenedor">
+          <i class="fa-solid fa-user"></i>
+          <input [(ngModel)]="username" name="username" required placeholder="Usuario" />
+          <label for="username"></label>
+        </div>
+        <!-- Si quieres agregar nombre y apellido, añade los campos en el modelo y backend -->
+        <!--
+        <div class="input-contenedor">
+          <i class="fa-solid fa-user"></i>
+          <input [(ngModel)]="nombre" name="nombre" required placeholder="Nombre" />
+          <label for="nombre">Nombre</label>
+        </div>
+        <div class="input-contenedor">
+          <i class="fa-solid fa-user"></i>
+          <input [(ngModel)]="apellido" name="apellido" required placeholder="Apellido" />
+          <label for="apellido">Apellido</label>
+        </div>
+        -->
+        <div class="input-contenedor">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" [(ngModel)]="password" name="password" required placeholder="Contraseña" />
+          <label for="password"></label>
+        </div>
+        <div class="input-contenedor">
+          <i class="fa-solid fa-user-lock"></i>
+          <input type="password" [(ngModel)]="password2" name="password2" required placeholder="Confirmar Contraseña" />
+          <label for="password2"></label>
+        </div>
+        <div class="terminos">
+          <label>
+            <input type="checkbox" required /> Aceptar términos y condiciones
+          </label>
+        </div>
+        <button type="submit">Registrarse</button>
+      </form>
+      <p *ngIf="errorMsg" style="color:red;">{{ errorMsg }}</p>
+    </div>
+  </div>
+</section>

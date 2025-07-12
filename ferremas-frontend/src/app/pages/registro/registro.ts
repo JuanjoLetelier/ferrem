@@ -28,10 +28,8 @@ export class Registro {
     this.http.post(`${this.baseUrl}/register/`, { username: this.username, password: this.password }).subscribe({
       next: () => this.router.navigate(['/login']),
       error: err => {
-        this.errorMsg = 'Error en el registro';
-        if (err.error && err.error.username) {
-          this.errorMsg = err.error.username;
-        }
+        // Muestra el mensaje de error que envía el backend
+        this.errorMsg = err.error?.error || 'Error en el registro';
       }
     });
   }

@@ -2,17 +2,29 @@ import stripe
 from rest_framework import viewsets, status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny
-from rest_framework.decorators import action, api_view
+from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.decorators import action, api_view, permission_classes
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-
+from rest_framework.serializers import ModelSerializer
 from .models import Producto
 from .serializers import ProductoSerializer
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+class UserSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'is_staff', 'is_superuser']
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+def listar_usuarios(request):
+    usuarios = User.objects.all().values('id', 'username', 'email', 'is_staff', 'is_superuser')
+    serializer = UserSerializer(usuarios, many=True)
+    return Response(list(usuarios), status=status.HTTP_200_OK)
 
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all().order_by('id')
