@@ -3,6 +3,7 @@
     "model": "productos.producto",
     "pk": 1,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-1001",
       "nombre": "Taladro Percutor 750W",
       "marca": "Bosch",
@@ -16,6 +17,7 @@
     "model": "productos.producto",
     "pk": 2,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-1002",
       "nombre": "Martillo de 16oz",
       "marca": "Stanley",
@@ -29,6 +31,7 @@
     "model": "productos.producto",
     "pk": 3,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-1003",
       "nombre": "Sierra Circular 1400W",
       "marca": "Makita",
@@ -42,6 +45,7 @@
     "model": "productos.producto",
     "pk": 4,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-2001",
       "nombre": "Cemento Portland 25Kg",
       "marca": "Melón",
@@ -55,6 +59,7 @@
     "model": "productos.producto",
     "pk": 5,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-2002",
       "nombre": "Ladrillos Rojo 10x20x5 cm",
       "marca": "Ladrillera Chile",
@@ -68,6 +73,7 @@
     "model": "productos.producto",
     "pk": 6,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-3001",
       "nombre": "Lentes de Seguridad Anti-empañante",
       "marca": "3M",
@@ -81,6 +87,7 @@
     "model": "productos.producto",
     "pk": 7,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-3002",
       "nombre": "Guantes de Trabajo de Cuero",
       "marca": "Bata",
@@ -94,6 +101,7 @@
     "model": "productos.producto",
     "pk": 8,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-4001",
       "nombre": "Tornillos 4x30 mm Caja 100 unidades",
       "marca": "Fischer",
@@ -107,6 +115,7 @@
     "model": "productos.producto",
     "pk": 9,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-4002",
       "nombre": "Adhesivo Epóxico 2 componentes",
       "marca": "Loctite",
@@ -120,6 +129,7 @@
     "model": "productos.producto",
     "pk": 10,
     "fields": {
+      "imagen": "https://media.falabella.com/sodimacCL/7404727_01/w=800,h=800,fit=pad",
       "codigo": "FER-5001",
       "nombre": "Cinta Métrica 5 metros",
       "marca": "Stanley",

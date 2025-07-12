@@ -11,6 +11,7 @@ export interface Producto {
   stock: number;
   categoria: string;
   descripcion?: string;
+  imagen: URL;
 }
 
 @Injectable({

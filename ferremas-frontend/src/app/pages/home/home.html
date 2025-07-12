@@ -1,1 +1,37 @@
-<p>chris agarralo a dos manos</p>
+<div id="carouselExampleCaptions" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- Primero marcamos el primer slide como "active" -->
+      <div
+        *ngFor="let p of productos; let i = index"
+        class="carousel-item"
+        [class.active]="i === 0"
+      >
+        <img [src]="p.imagen" class="d-block w-100 carousel-img" [alt]="p.nombre" />
+        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
+          <h5>{{ p.nombre }}</h5>
+          <p>{{ p.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Controles (flechas izquierda/derecha) -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <hr>
